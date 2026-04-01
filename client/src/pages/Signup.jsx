@@ -1,79 +1,130 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Auth.css";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [role, setRole] = useState("donor");
 
- return (
-  <div className="auth-wrapper">
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: ""
+  });
 
-    {/* LEFT DESIGN PANEL */}
-    <div className="auth-left">
-      <div className="overlay">
-        <h1>Welcome</h1>
-        <p>Join us and make a difference 🌱</p>
-      </div>
-    </div>
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
-    {/* RIGHT FORM PANEL */}
-    <div className="auth-right">
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-      <div className="auth-card">
-        <h2>Create Account</h2>
+  try {
+    const res = await fetch("http://localhost:5000/api/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        role: role
+      })
+    });
 
-        {/* ROLE TOGGLE */}
-        <div className="role-toggle">
-          <button
-            className={role === "donor" ? "active" : ""}
-            onClick={() => setRole("donor")}
-          >
-            Donor
-          </button>
+    const data = await res.json();
 
-          <button
-            className={role === "acceptor" ? "active" : ""}
-            onClick={() => setRole("acceptor")}
-          >
-            Acceptor
-          </button>
+    if (!res.ok) {
+      alert(data.message);
+      return;
+    }
+
+    alert("Signup successful!");
+    navigate("/login");   // 🔥 THIS LINE
+
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+  return (
+    <div className="auth-wrapper">
+
+      {/* LEFT PANEL */}
+      <div className="auth-left">
+        <div className="overlay">
+          <h1>Welcome</h1>
+          <p>Join us and make a difference 🌱</p>
         </div>
+      </div>
 
-        <form>
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Password" required />
+      {/* RIGHT PANEL */}
+      <div className="auth-right">
+        <div className="auth-card">
+          <h2>Create Account</h2>
 
-          {role === "donor" && (
-            <>
-              <input type="text" placeholder="Full Name" required />
-              <input type="text" placeholder="Phone Number" required />
-              <input type="text" placeholder="City" />
-              <input type="text" placeholder="Address" />
-            </>
-          )}
+          {/* ROLE TOGGLE */}
+          <div className="role-toggle">
+            <button
+              type="button"
+              className={role === "donor" ? "active" : ""}
+              onClick={() => setRole("donor")}
+            >
+              Donor
+            </button>
 
-          {role === "acceptor" && (
-            <>
-              <input type="text" placeholder="Organisation Name" required />
-              <input type="text" placeholder="Type (NGO / Shelter)" />
-              <input type="text" placeholder="Contact Person" required />
-              <input type="text" placeholder="Phone Number" required />
-              <input type="text" placeholder="Address" required />
-              <input type="text" placeholder="City" required />
-            </>
-          )}
+            <button
+              type="button"
+              className={role === "acceptor" ? "active" : ""}
+              onClick={() => setRole("acceptor")}
+            >
+              Acceptor
+            </button>
+          </div>
 
-          <button className="submit-btn">Create Account</button>
-        </form>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Full Name"
+              required
+              onChange={handleChange}
+            />
 
-        <p>
-          Already have an account? <Link to="/login">Login</Link>
-        </p>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              onChange={handleChange}
+            />
+
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              onChange={handleChange}
+            />
+
+            <button type="submit" className="submit-btn">
+              Create Account
+            </button>
+          </form>
+
+          <p>
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
+        </div>
       </div>
 
     </div>
-  </div>
-);
+  );
 };
 
 export default Signup;

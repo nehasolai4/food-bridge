@@ -6,50 +6,55 @@
   text-align: center;
 }
 
-/* GRID (THIS IS MAIN FIX) */
+/* GRID */
 .food-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 👈 FORCE 3 CARDS */
-  gap: 25px;
-  max-width: 900px;
-  margin: 60px auto;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;              /* 🔥 more space between cards */
+  max-width: 1200px;      /* 🔥 allow more width */
+  margin: 80px auto;
+  padding: 0 20px;
 }
 
 /* CARD */
 .food-card {
   background: white;
   padding: 20px;
+  padding-top: 60px; /* 🔥 space for image */
   border-radius: 20px;
   text-align: center;
   transition: 0.3s;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   position: relative;
-  width: 100%;   /* 👈 important */
+  width: 100%;
   max-width: 250px;
-  margin: auto; 
+  margin: auto;
 }
 
-/* IMAGE CIRCLE (NEW) */
-.food-card::before {
-  content: "🍽️";
-  width: 80px;
-  height: 80px;
-  background: #d1fae5;
+/* 🔥 IMAGE INSIDE CIRCLE */
+.circle-img {
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
+  background: #d1fae5;
   position: absolute;
   top: -40px;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  border: 5px solid #10b981;
+  overflow: hidden;
+  border: 5px solid #39d5a1;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.circle-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* TEXT SPACING */
 .food-card h3 {
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 /* BUTTON */
@@ -63,23 +68,87 @@
   cursor: pointer;
 }
 
-/* 🔥 HOVER MAGIC */
+/* HOVER EFFECT */
 .food-card:hover {
   transform: translateY(-10px) scale(1.05);
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-/* HOVER IMAGE */
-.food-card:hover::before {
-  background: #10b981;
-  color: white;
+.circle-img:hover {
   transform: translateX(-50%) scale(1.1);
 }
 
-.food-img {
+.expiry {
+  font-size: 14px;
+  font-weight: 500;
+  color: #f52a0b; /* orange */
+}
+
+/* 🔥 MODAL OVERLAY */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 150px;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 🔥 MODAL BOX */
+.modal {
+  background: white;
+  border-radius: 20px;
+  width: 700px;              /* bigger width */
+  max-width: 90%;
+  height: 350px;             /* fixed height for consistency */
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+/* LEFT IMAGE */
+.modal-img {
+  width: 50%;                /* fixed half */
+  height: 100%;
   object-fit: cover;
-  border-radius: 15px;
+}
+
+/* RIGHT CONTENT */
+.modal-content {
+  width: 50%;                /* fixed half */
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* TEXT */
+.modal-content p {
+  margin: 6px 0;
+}
+
+/* TITLE */
+.modal-content h2 {
   margin-bottom: 10px;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 22px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* REQUEST BUTTON */
+.modal-content .request-btn {
+  align-self: flex-start;
+  margin-top: 10px;
 }

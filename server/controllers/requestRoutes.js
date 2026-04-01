@@ -6,3 +6,7 @@ const { createRequest } = require("../controllers/requestController");
 router.post("/", createRequest);
 
 module.exports = router;
+
+const { signup, login, getUsers } = require("../controllers/authController");
+
+router.get("/users", getUsers);

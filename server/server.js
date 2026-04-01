@@ -12,6 +12,9 @@ app.use("/uploads", express.static("uploads"));
 const foodRoutes = require("./routes/foodRoutes");
 app.use("/api/food", foodRoutes);
 
+const authRoutes = require("./routes/authRoutes");
+app.use("/api/auth", authRoutes);
+
 // DB connection
 mongoose.connect("mongodb://127.0.0.1:27017/foodapp")
   .then(() => console.log("MongoDB Connected"))
