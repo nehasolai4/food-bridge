@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./FindFood.css";
-
+import { useNavigate } from "react-router-dom";
 const FindFood = () => {
   const [food, setFood] = useState([]);
   const [selectedFood, setSelectedFood] = useState(null);
@@ -8,6 +8,7 @@ const FindFood = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const user = JSON.parse(localStorage.getItem("user"));
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:5000/api/food")
@@ -84,7 +85,11 @@ const handleRequest = async () => {
       {/* 🔥 NAVBAR */}
       <div className="top-navbar">
         <div className="navbar-brand">
-          <h2 className="logo">
+          <h2
+            className="logo"
+            onClick={() => navigate("/")}
+            style={{ cursor: "pointer" }}
+          >
             <span className="logo-emoji">🍽️</span>
             FoodBridge
           </h2>
@@ -349,8 +354,13 @@ const handleRequest = async () => {
             <div className="sidebar-divider"></div>
 
             <div className="request-history">
-              <h4>📊 Request History</h4>
-              <p className="history-empty">No requests yet. Start requesting food!</p>
+              <h4>📊 Dashboard</h4>
+              <button
+                className="request-btn"
+                onClick={() => navigate("/acceptor-dashboard")}
+              >
+                Go to Dashboard
+              </button>
             </div>
 
             <button

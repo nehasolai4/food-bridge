@@ -6,7 +6,7 @@ import DonateFood from "./pages/DonateFood";
 import FindFood from "./pages/FindFood";
 import RequestSent from "./pages/RequestSent";
 import DonorDashboard from "./pages/DonorDashboard";
-
+import AcceptorDashboard from "./pages/AcceptorDashboard";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Route path="/find-food" element={<FindFood />} />
         <Route path="/request-sent" element={<RequestSent />} />
         <Route path="/donor-dashboard" element={<DonorDashboard />} />
-
+        <Route path="/acceptor-dashboard" element={<AcceptorDashboard />} />
       </Routes>
     </Router>
   );

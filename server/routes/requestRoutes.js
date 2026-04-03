@@ -5,12 +5,23 @@ const {
   createRequest,
   getDonorRequests,
   getRequests,
-  updateRequestStatus
+  updateRequestStatus,
+  getAcceptorRequests
 } = require("../controllers/requestController");
 
+// create request
 router.post("/create", createRequest);
+
+// get all requests (optional)
 router.get("/", getRequests);
+
+// donor requests
 router.get("/donor/:id", getDonorRequests);
-router.put("/:id", updateRequestStatus); // 🔥 NEW
+
+// acceptor requests
+router.get("/acceptor/:id", getAcceptorRequests);
+
+// update status (accept/reject/completed)
+router.put("/:id", updateRequestStatus);
 
 module.exports = router;

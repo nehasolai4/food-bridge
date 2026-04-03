@@ -56,6 +56,7 @@ exports.login = async (req, res) => {
       token,
       user: {
         id: user._id,
+        name: user.name,
         email: user.email,
         role: user.role
       }
@@ -65,6 +66,7 @@ exports.login = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
 
 exports.getUsers = async (req, res) => {
   try {

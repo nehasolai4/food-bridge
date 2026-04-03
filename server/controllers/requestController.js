@@ -32,7 +32,20 @@ exports.getDonorRequests = async (req, res) => {
   try {
     const requests = await Request.find({ donorId: req.params.id })
       .populate("foodId")
-      .populate("acceptorId");
+      .populate("acceptorId","name email phone");
+
+    res.json(requests);
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.getAcceptorRequests = async (req, res) => {
+  try {
+    const requests = await Request.find({ acceptorId: req.params.id })
+      .populate("foodId")
+      .populate("donorId", "name email phone");
 
     res.json(requests);
 
@@ -52,19 +65,47 @@ exports.getRequests = async (req, res) => {
 };
 
 
+
+
 exports.updateRequestStatus = async (req, res) => {
   try {
     const { status } = req.body;
+    const requestId = req.params.id;
 
-    const request = await Request.findByIdAndUpdate(
-      req.params.id,
-      { status },
-      { new: true }
-    );
+    const request = await Request.findById(requestId);
 
-    res.json(request);
+    if (!request) {
+      return res.status(404).json({ message: "Request not found" });
+    }
+
+    // ✅ Prevent multiple accepts
+    if (status === "accepted") {
+      const alreadyAccepted = await Request.findOne({
+        foodId: request.foodId,
+        status: "accepted"
+      });
+
+      if (alreadyAccepted) {
+        return res.status(400).json({
+          message: "This food is already accepted by someone else"
+        });
+      }
+    }
+
+    // ✅ Only allow completed if already accepted
+    if (status === "completed" && request.status !== "accepted") {
+      return res.status(400).json({
+        message: "Only accepted requests can be completed"
+      });
+    }
+
+    request.status = status;
+    await request.save();
+
+    res.json({ message: "Status updated", request });
 
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.log(err); // 🔥 check terminal for real error
+    res.status(500).json({ message: "Server error" });
   }
 };

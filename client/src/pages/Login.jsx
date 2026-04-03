@@ -56,7 +56,7 @@ const Login = () => {
         if (data.user.role === "donor") {
           navigate("/donor-dashboard");
         } else {
-          navigate("/find-food");
+          navigate("/acceptor-dashboard");
         }
       }, 500);
 

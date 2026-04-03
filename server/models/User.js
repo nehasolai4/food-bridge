@@ -11,6 +11,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     enum: ["donor", "acceptor"],
     required: true
+  },
+  phone: {
+    type: String
   }
 }, { timestamps: true });
 

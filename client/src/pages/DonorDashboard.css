@@ -153,15 +153,77 @@
   color: gray;
 }
 
-/* 🔥 REQUEST CARD IMPROVEMENTS */
-.request-status {
-  margin-top: 8px;
-  font-size: 14px;
+/* REQUESTS SECTION */
+.requests-container {
+  margin-top: 30px;
 }
 
-/* status colors */
+.requests-group {
+  margin-bottom: 35px;
+}
+
+.requests-group h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #1f2937;
+}
+
+.requests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.request-card {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-left: 4px solid #14b8a6;
+  transition: 0.3s;
+}
+
+.request-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.request-card h3 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.request-card p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #374151;
+}
+
+.request-card span {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.empty-message {
+  color: #999;
+  font-style: italic;
+  padding: 15px 0;
+}
+
+/* REQUEST STATUS */
+.request-status {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
 .status-pending {
-  color: #555;
+  color: #f59e0b;
 }
 
 .status-accepted {
@@ -172,53 +234,58 @@
   color: #ef4444;
 }
 
-/* 🔥 BUTTON GROUP */
-.request-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 12px;
+.status-completed {
+  color: #10b981;
 }
 
-/* keep your existing request-btn but refine */
+/* REQUEST ACTIONS */
+.request-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 15px;
+}
+
 .request-btn {
-  padding: 8px 16px;
+  padding: 10px 16px;
   border-radius: 20px;
   border: none;
   cursor: pointer;
   font-size: 14px;
-}
-
-/* accept */
-
-
-/* FIX BUTTON ALIGNMENT */
-.request-actions {
-  display: flex;
-  flex-direction: row;   /* 🔥 FORCE SIDE BY SIDE */
-  gap: 10px;
-  margin-top: 12px;
-}
-
-/* make buttons equal */
-.request-actions .request-btn {
+  font-weight: 500;
   flex: 1;
+  transition: 0.3s;
 }
 
-/* colors */
+.request-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
 .accept-btn {
   background: linear-gradient(135deg, #10b981, #34d399);
   color: white;
-  margin: 5px;
+}
+
+.accept-btn:hover {
+  background: linear-gradient(135deg, #059669, #10b981);
 }
 
 .reject-btn {
   background: linear-gradient(135deg, #ef4444, #f87171);
   color: white;
-  margin: 5px;
 }
 
-/* status spacing */
-.request-status {
-  margin-top: 8px;
-  font-size: 14px;
+.reject-btn:hover {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+}
+
+.completed-btn {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  color: white;
+  width: 100%;
+}
+
+.completed-btn:hover {
+  background: linear-gradient(135deg, #1d4ed8, #3b82f6);
 }
