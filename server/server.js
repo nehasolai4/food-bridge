@@ -21,7 +21,9 @@ const requestRoutes = require("./routes/requestRoutes");
 app.use("/api/request", requestRoutes);
 
 // DB connection
-mongoose.connect("mongodb://127.0.0.1:27017/foodapp")
+require("dotenv").config();
+
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 

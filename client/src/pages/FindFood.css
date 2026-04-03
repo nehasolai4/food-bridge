@@ -402,6 +402,7 @@ html {
 
 /* 🔥 IMAGE CIRCLE */
 .circle-img {
+  margin: 0 auto;
   width: 140px;
   height: 140px;
   border-radius: 50%;

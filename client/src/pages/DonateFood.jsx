@@ -85,88 +85,122 @@ const DonateFood = () => {
 
   return (
     <div className="donate-container">
-
       <div className="donate-card">
+
         <h2>Donate Food</h2>
+        <p className="form-subtitle">Share surplus food with those who need it most</p>
 
         <form onSubmit={handleSubmit}>
 
-          {/* IMAGE */}
+          {/* ── IMAGE ── */}
           <div className="image-upload">
-            <label>Upload Food Image</label>
-            <input type="file" accept="image/*" onChange={handleImage} />
+            <label className="image-upload-label" htmlFor="food-image-input">
+              {preview ? null : (
+                <>
+                  <span className="upload-icon">📸</span>
+                  <span className="upload-text">Upload Food Image</span>
+                  <span className="upload-hint">Click to browse • JPG, PNG supported</span>
+                </>
+              )}
+              <input
+                id="food-image-input"
+                type="file"
+                accept="image/*"
+                onChange={handleImage}
+              />
+            </label>
             {preview && (
               <img src={preview} alt="preview" className="preview-img" />
             )}
           </div>
 
-          {/* FOOD NAME */}
-          <input
-            type="text"
-            name="title"
-            placeholder="Food Name"
-            onChange={handleChange}
-            required
-          />
+          {/* ── FOOD INFO ── */}
+          <div className="form-section-label">🍱 Food Details</div>
 
-          {/* QUANTITY */}
-          <input
-            type="text"
-            name="quantity"
-            placeholder="Quantity"
-            onChange={handleChange}
-            required
-          />
+          <div className="form-row">
+            <div className="input-wrapper">
+              <input
+                type="text"
+                name="title"
+                placeholder="Food Name"
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-          {/* EXPIRY */}
-          <label style={{ color: "grey", fontSize: "14px" }}>
-            Expiry date
-          </label>
-          <input
-            type="datetime-local"
-            name="expiry"
-            onChange={handleChange}
-            required
-          />
+            <div className="input-wrapper">
+              <input
+                type="text"
+                name="quantity"
+                placeholder="Quantity"
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
 
-          {/* LOCATION */}
-          <input
-            type="text"
-            name="city"
-            placeholder="City"
-            onChange={handleLocationChange}
-            required
-          />
+          <div className="input-wrapper">
+            <input
+              type="datetime-local"
+              name="expiry"
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-          <input
-            type="text"
-            name="address"
-            placeholder="Address"
-            onChange={handleLocationChange}
-          />
+          {/* ── LOCATION ── */}
+          <div className="form-section-label">📍 Pickup Location</div>
 
-          <input
-            type="text"
-            name="pincode"
-            placeholder="Pincode"
-            onChange={handleLocationChange}
-          />
+          <div className="form-row">
+            <div className="input-wrapper">
+              <input
+                type="text"
+                name="city"
+                placeholder="City"
+                onChange={handleLocationChange}
+                required
+              />
+            </div>
 
-          {/* CONTACT */}
-          <input
-            type="text"
-            name="donor"
-            placeholder="Contact / Name"
-            onChange={handleChange}
-            required
-          />
+            <div className="input-wrapper">
+              <input
+                type="text"
+                name="pincode"
+                placeholder="Pincode"
+                onChange={handleLocationChange}
+              />
+            </div>
+          </div>
 
-          {/* DESCRIPTION */}
-          <textarea
-            name="description"
-            placeholder="Additional Notes"
-            onChange={handleChange}
-          ></textarea>
+          <div className="input-wrapper">
+            <input
+              type="text"
+              name="address"
+              placeholder="Full Address"
+              onChange={handleLocationChange}
+            />
+          </div>
+
+          {/* ── CONTACT & NOTES ── */}
+          <div className="form-section-label">👤 Contact & Notes</div>
+
+          <div className="input-wrapper">
+            <input
+              type="text"
+              name="donor"
+              placeholder="Contact / Name"
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="input-wrapper textarea-wrapper">
+            <textarea
+              name="description"
+              placeholder="Additional Notes (allergies, packaging, etc.)"
+              onChange={handleChange}
+            ></textarea>
+          </div>
 
           <button className="submit-btn" type="submit">
             Post Food
@@ -174,7 +208,6 @@ const DonateFood = () => {
 
         </form>
       </div>
-
     </div>
   );
 };

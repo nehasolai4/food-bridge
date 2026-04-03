@@ -1,96 +1,376 @@
-body {
-  background: #f2f2f2;
-  font-family: "Poppins", sans-serif;
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* CSS VARIABLES & RESET */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+:root {
+  --primary: #10b981;
+  --primary-dark: #059669;
+  --primary-light: #34d399;
+  --accent: #6366f1;
+  --light-bg: #e6f4f1;
+  --white: #ffffff;
+  --text-dark: #1a1a1a;
+  --text-light: #6b7280;
+  --border-radius: 16px;
+  --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* CONTAINER */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #e6f4f1 0%, #f4fdfb 50%, #e8f7f3 100%);
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* PAGE */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 .donate-container {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 60px 80px;
-  min-height: calc(100vh - 120px);
-  background: #f2f2f2;
+  padding: 50px 24px 80px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e6f4f1 0%, #f4fdfb 50%, #e8f7f3 100%);
+  position: relative;
+  overflow-x: hidden;
 }
 
+/* Floating background circles */
+.donate-container::before,
+.donate-container::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  opacity: 0.08;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.donate-container::before {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  top: -100px;
+  right: -100px;
+  animation: float 8s ease-in-out infinite;
+}
+
+.donate-container::after {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  bottom: 200px;
+  left: -80px;
+  animation: float 8s ease-in-out infinite 2s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(40px) translateX(20px); }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 /* CARD */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 .donate-card {
-  background: white;
-  padding: 40px;
-  border-radius: 20px;
-  width: min(900px, 100%);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 44px 48px;
+  border-radius: 28px;
+  width: min(680px, 100%);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 1px 0 rgba(255,255,255,0.8) inset;
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  position: relative;
+  z-index: 10;
+  animation: slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
-.donate-card form {
-  display: grid;
-  gap: 16px;
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.donate-card input,
-.donate-card textarea,
-.donate-card .image-upload,
-.donate-card .submit-btn {
-  width: 100%;
-}
-
-.donate-card input {
-  min-height: 44px;
-}
-
-
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 /* TITLE */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 .donate-card h2 {
   text-align: center;
-  margin-bottom: 20px;
-  color: #09637E;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
 }
 
+.donate-card h2::before {
+  content: "🍽️ ";
+  font-size: 1.7rem;
+}
+
+.form-subtitle {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 36px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* SECTION LABELS */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.form-section-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--primary-dark);
+  margin: 24px 0 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(16, 185, 129, 0.15);
+}
+
+.form-section-label:first-of-type {
+  margin-top: 0;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* FORM GRID */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.donate-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* INPUT WRAPPER (floating label style) */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.input-wrapper {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.input-wrapper .input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  z-index: 2;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.input-wrapper.textarea-wrapper .input-icon {
+  top: 16px;
+  transform: none;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 /* INPUTS */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 .donate-card input,
 .donate-card textarea {
   width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 10px;
-  border: 1px solid #ccc;
+  padding: 13px 16px 13px 42px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(16, 185, 129, 0.2);
   outline: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  background: rgba(255, 255, 255, 0.6);
+  transition: var(--transition);
+  font-weight: 500;
+  margin: 0;
 }
 
+.donate-card input::placeholder,
+.donate-card textarea::placeholder {
+  color: rgba(107, 114, 128, 0.6);
+  font-weight: 400;
+}
+
+.donate-card input:focus,
+.donate-card textarea:focus {
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+  transform: translateY(-1px);
+}
+
+/* datetime-local */
+.donate-card input[type="datetime-local"] {
+  color: var(--text-dark);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 /* TEXTAREA */
-textarea {
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.donate-card textarea {
   resize: none;
-  height: 80px;
+  height: 90px;
+  padding-top: 13px;
+  line-height: 1.6;
 }
 
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* EXPIRY LABEL */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.expiry-label {
+  display: none; /* hidden — we handle it via placeholder/icon */
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 /* IMAGE UPLOAD */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 .image-upload {
-  margin-bottom: 15px;
+  margin-bottom: 14px;
 }
 
-.image-upload label {
+.image-upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 28px 20px;
+  border: 2px dashed rgba(16, 185, 129, 0.35);
+  border-radius: 14px;
+  background: rgba(16, 185, 129, 0.04);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.image-upload-label:hover {
+  border-color: var(--primary);
+  background: rgba(16, 185, 129, 0.08);
+  transform: translateY(-2px);
+}
+
+.image-upload-label .upload-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.image-upload-label .upload-text {
   font-size: 0.9rem;
-  color: #555;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.image-upload-label .upload-hint {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  font-weight: 400;
+}
+
+/* Hide the actual file input */
+.image-upload input[type="file"] {
+  display: none;
 }
 
 .preview-img {
   width: 100%;
-  margin-top: 10px;
-  border-radius: 10px;
+  max-height: 220px;
+  object-fit: cover;
+  margin-top: 12px;
+  border-radius: 14px;
+  border: 2px solid rgba(16, 185, 129, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.4s ease;
 }
 
-/* BUTTON */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* SUBMIT BUTTON */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 .submit-btn {
   width: 100%;
-  padding: 12px;
-  background: #088395;
+  padding: 15px 24px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 14px;
   cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
   margin-top: 10px;
+  transition: var(--transition);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.submit-btn::after {
+  content: "→";
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
 }
 
 .submit-btn:hover {
-  background: #09637E;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(16, 185, 129, 0.45);
+}
+
+.submit-btn:hover::after {
+  transform: translateX(4px);
+}
+
+.submit-btn:active {
+  transform: translateY(-1px);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* RESPONSIVE */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (max-width: 600px) {
+  .donate-card {
+    padding: 28px 20px;
+  }
+
+  .donate-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
 }
