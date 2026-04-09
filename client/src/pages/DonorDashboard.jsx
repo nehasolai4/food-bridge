@@ -88,7 +88,7 @@ const DonorDashboard = () => {
         {/* HEADER */}
         <div className="donor-header">
           <h1>Dashboard</h1>
-          <p>Welcome back, {user?.name || "User"} 👋</p>
+          <p>Welcome back, {user?.name || "User"} </p>
         </div>
 
         {/* STATS */}
@@ -236,7 +236,7 @@ const DonorDashboard = () => {
                           <p>📍 Requested by: <strong>{req.acceptorId?.name}</strong></p>
 
                           <p className="request-status status-completed">
-                            Status: <strong>Food successfully handed over 🎉</strong>
+                            Status: <strong>Food successfully handed over</strong>
                           </p>
                         </div>
                       ))}

@@ -78,7 +78,7 @@ const Login = () => {
         <div className="overlay">
           <div className="overlay-content">
             <h1 className="overlay-title">
-              <span className="title-emoji">👋</span>
+              {/*<span className="title-emoji">👋</span>*/}
               Welcome Back
             </h1>
             <p className="overlay-subtitle">Login to continue helping others</p>
@@ -126,7 +126,7 @@ const Login = () => {
             {/* EMAIL FIELD */}
             <div className="form-group">
               <label className="form-label">
-                <span className="label-icon">📧</span>
+                {/*<span className="label-icon">📧</span>*/}
                 Email Address
               </label>
               <div className="input-wrapper">
@@ -153,7 +153,7 @@ const Login = () => {
             {/* PASSWORD FIELD */}
             <div className="form-group">
               <label className="form-label">
-                <span className="label-icon">🔒</span>
+                {/*<span className="label-icon">🔒</span>*/}
                 Password
               </label>
               <div className="input-wrapper">
@@ -208,7 +208,7 @@ const Login = () => {
                 </>
               ) : (
                 <>
-                  <span className="btn-icon">🚀</span>
+                  {/*<span className="btn-icon">🚀</span>*/}
                   Login
                 </>
               )}
@@ -233,10 +233,10 @@ const Login = () => {
           {/* QUICK LOGIN BADGES */}
           <div className="quick-access">
             <div className="badge badge-donor">
-              <span>🍽️ Donor</span>
+              <span>Donor</span>
             </div>
             <div className="badge badge-acceptor">
-              <span>🤝 Acceptor</span>
+              <span>Acceptor</span>
             </div>
           </div>
         </div>

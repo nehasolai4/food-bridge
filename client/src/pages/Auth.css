@@ -2,6 +2,8 @@
 /* CSS VARIABLES & RESET */
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Fredoka:wght@300..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 :root {
   --primary: #10b981;
   --primary-dark: #059669;
@@ -30,7 +32,7 @@ html {
 }
 
 body {
-  font-family: "Poppins", "Segoe UI", sans-serif;
+  font-family: "Nunito Sans" "Poppins", "Segoe UI", sans-serif;
   color: var(--text-dark);
 }
 

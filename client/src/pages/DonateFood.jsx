@@ -115,7 +115,7 @@ const DonateFood = () => {
           </div>
 
           {/* ── FOOD INFO ── */}
-          <div className="form-section-label">🍱 Food Details</div>
+          <div className="form-section-label">Food Details</div>
 
           <div className="form-row">
             <div className="input-wrapper">
@@ -140,8 +140,10 @@ const DonateFood = () => {
           </div>
 
           <div className="input-wrapper">
+            <label style={{color:"rgba(107, 114, 128, 0.6)",fontSize:"15px"}}>Expiry date</label>
             <input
               type="datetime-local"
+              placeholder="Expiry date"
               name="expiry"
               onChange={handleChange}
               required
@@ -149,7 +151,7 @@ const DonateFood = () => {
           </div>
 
           {/* ── LOCATION ── */}
-          <div className="form-section-label">📍 Pickup Location</div>
+          <div className="form-section-label">Pickup Location</div>
 
           <div className="form-row">
             <div className="input-wrapper">
@@ -182,7 +184,7 @@ const DonateFood = () => {
           </div>
 
           {/* ── CONTACT & NOTES ── */}
-          <div className="form-section-label">👤 Contact & Notes</div>
+          <div className="form-section-label">Contact & Notes</div>
 
           <div className="input-wrapper">
             <input

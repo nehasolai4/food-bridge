@@ -220,7 +220,7 @@ const handleRequest = async () => {
           </div>
         ) : (
           <div className="empty-state">
-            <div className="empty-icon">🍱</div>
+            {/*<div className="empty-icon">🍱</div>*/}
             <h3>No food available</h3>
             <p>Try searching with different keywords or check back later</p>
           </div>

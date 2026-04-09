@@ -28,7 +28,7 @@ const AcceptorDashboard = () => {
               style={{ cursor: "pointer" }}
               onClick={() => navigate("/")}
             >
-              FoodBridge
+              🍽️FoodBridge
             </h2>
 
         <ul>
@@ -44,7 +44,7 @@ const AcceptorDashboard = () => {
         {/* HEADER */}
         <div className="donor-header">
           <h1>My Requests</h1>
-          <p>Track your food requests 🍱</p>
+          <p>Track your food requests</p>
         </div>
 
         {/* STATS */}
@@ -70,7 +70,7 @@ const AcceptorDashboard = () => {
           className="browse-btn"
           onClick={() => navigate("/find-food")}
         >
-          🍱 Browse More Food
+          Browse More Food
         </button>
 
         {/* 🔶 PENDING REQUESTS */}
@@ -138,8 +138,8 @@ const AcceptorDashboard = () => {
                 .map(r => (
                   <div className="donor-food-card" key={r._id}>
                     <h3>{r.foodId?.title}</h3>
-                    <p>👤 Donor: <strong>{r.donorId?.name}</strong></p>
-                    <p className="request-status status-completed">🎉 Status: <strong>COMPLETED</strong></p>
+                    <p>Donor: <strong>{r.donorId?.name}</strong></p>
+                    <p className="request-status status-completed">Status: <strong>COMPLETED</strong></p>
                     <span>Thank you for using FoodBridge!</span>
                   </div>
                 ))}

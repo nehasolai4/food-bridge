@@ -1,6 +1,6 @@
 import React from "react";
 import "./LandingPage.css";
-import foodImg from "./food-delivery.avif";
+import foodImg from "./Eating together-pana.svg";
 import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
@@ -46,9 +46,9 @@ const LandingPage = () => {
   return (
     <div className="landing">
       {/* ANIMATED BACKGROUND ELEMENTS */}
-      <div className="bg-decoration bg-circle-1"></div>
+      {/*<div className="bg-decoration bg-circle-1"></div>
       <div className="bg-decoration bg-circle-2"></div>
-      <div className="bg-decoration bg-circle-3"></div>
+      <div className="bg-decoration bg-circle-3"></div>*/}
 
       {/* NAVBAR */}
       <nav className="navbar">
@@ -102,9 +102,10 @@ const LandingPage = () => {
       {/* HERO SECTION */}
       <div className="hero">
         <div className="hero-text">
-          <div className="floating-tag">
+          {/*<div className="floating-tag">
             <span>✨ Making a difference</span>
           </div>
+          */}
 
           <h1 className="hero-title">
             <span className="title-word word-1">Rescue</span>
@@ -123,7 +124,7 @@ const LandingPage = () => {
               className="btn btn-primary"
               onClick={handleDonateClick}
             >
-              <span className="btn-icon">📦</span>
+              <span className="btn-icon"></span>
               Donate Food
             </button>
 
@@ -131,12 +132,12 @@ const LandingPage = () => {
               className="btn btn-secondary"
               onClick={handleFindFoodClick}
             >
-              <span className="btn-icon">🔍</span>
+              {/*<span className="btn-icon">🔍</span>*/}
               Find Food
             </button>
           </div>
 
-          <div className="hero-stats">
+          {/*<div className="hero-stats">
             <div className="stat">
               <div className="stat-number">10K+</div>
               <div className="stat-label">Meals Shared</div>
@@ -149,7 +150,7 @@ const LandingPage = () => {
               <div className="stat-number">8.3K</div>
               <div className="stat-label">Families Helped</div>
             </div>
-          </div>
+          </div>*/}
         </div>
 
         <div className="hero-image">
