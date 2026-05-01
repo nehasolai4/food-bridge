@@ -71,7 +71,7 @@ const DonateFood = () => {
       formData.append("image", image);
     }
 
-    fetch("http://localhost:5000/api/food/add", {
+    fetch("https://food-bridge-api-gojc.onrender.com/api/food/add", {
       method: "POST",
       body: formData
     })

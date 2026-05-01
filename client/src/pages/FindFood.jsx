@@ -11,7 +11,7 @@ const FindFood = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/food")
+    fetch("https://food-bridge-api-gojc.onrender.com/api/food")
       .then(res => res.json())
       .then(data => setFood(data))
       .catch(err => console.log(err));
@@ -50,7 +50,7 @@ const handleRequest = async () => {
   }
 
   try {
-    const res = await fetch("http://localhost:5000/api/request/create", {
+    const res = await fetch("https://food-bridge-api-gojc.onrender.com/api/request/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -174,7 +174,7 @@ const handleRequest = async () => {
                     <img
                       src={
                         item.image
-                          ? `http://localhost:5000/uploads/${item.image}`
+                          ? `https://food-bridge-api-gojc.onrender.com/uploads/${item.image}`
                           : "/placeholder.png"
                       }
                       alt={item.title}
@@ -241,7 +241,7 @@ const handleRequest = async () => {
 
             <div className="modal-image-container">
               <img
-                src={`http://localhost:5000/uploads/${selectedFood.image}`}
+                src={`https://food-bridge-api-gojc.onrender.com/uploads/${selectedFood.image}`}
                 alt={selectedFood.title}
                 className="modal-img"
               />

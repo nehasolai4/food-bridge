@@ -12,7 +12,7 @@ const DonorDashboard = () => {
 
   const handleStatus = async (id, status) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/request/${id}`, {
+      const res = await fetch(`https://food-bridge-api-gojc.onrender.com/api/request/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
@@ -41,14 +41,14 @@ const DonorDashboard = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/food/donor/${user.id}`)
+    fetch(`https://food-bridge-api-gojc.onrender.com/api/food/donor/${user.id}`)
       .then(res => res.json())
       .then(data => setFoods(data))
       .catch(err => console.log(err));
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/request/donor/${user.id}`)
+    fetch(`https://food-bridge-api-gojc.onrender.com/api/request/donor/${user.id}`)
       .then(res => res.json())
       .then(data => setRequests(data))
       .catch(err => console.log(err));
@@ -120,7 +120,7 @@ const DonorDashboard = () => {
               {foods.map(food => (
                 <div className="donor-food-card" key={food._id}>
                   <img
-                    src={`http://localhost:5000/uploads/${food.image}`}
+                    src={`https://food-bridge-api-gojc.onrender.com/uploads/${food.image}`}
                     alt="food"
                   />
                   <h3>{food.title}</h3>

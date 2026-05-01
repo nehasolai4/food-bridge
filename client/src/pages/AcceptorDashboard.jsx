@@ -9,7 +9,7 @@ const AcceptorDashboard = () => {
   const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/request/acceptor/${user.id}`)
+    fetch(`https://food-bridge-api-gojc.onrender.com/api/request/acceptor/${user.id}`)
       .then(res => res.json())
       .then(data => setRequests(data))
       .catch(err => console.log(err));
