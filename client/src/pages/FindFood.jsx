@@ -172,12 +172,7 @@ const handleRequest = async () => {
                   <div className="circle-img">
                     <div className="image-glow"></div>
                     <img
-                      src={
-                        item.image
-                          ? `https://food-bridge-api-gojc.onrender.com/uploads/${item.image}`
-                          : "/placeholder.png"
-                      }
-                      alt={item.title}
+                      src={item.image || "/placeholder.png"}
                     />
                   </div>
                 </div>
@@ -241,7 +236,7 @@ const handleRequest = async () => {
 
             <div className="modal-image-container">
               <img
-                src={`https://food-bridge-api-gojc.onrender.com/uploads/${selectedFood.image}`}
+                src={selectedFood.image}
                 alt={selectedFood.title}
                 className="modal-img"
               />
