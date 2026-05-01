@@ -5,7 +5,7 @@ exports.addFood = async (req, res) => {
   try {
     const foodData = {
       ...req.body,
-      image: req.file ? req.file.filename : "",
+      image: req.file ? req.file.path : "",
       donorId: req.body.donorId
     };
 

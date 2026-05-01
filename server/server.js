@@ -1,3 +1,6 @@
+require("dotenv").config();
+
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -21,7 +24,6 @@ const requestRoutes = require("./routes/requestRoutes");
 app.use("/api/request", requestRoutes);
 
 // DB connection
-require("dotenv").config();
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))

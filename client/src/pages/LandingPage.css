@@ -27,7 +27,7 @@ html {
 }
 
 body {
-  font-family: "Nunito Sans","Poppins", "Segoe UI", sans-serif;
+  font-family: "Fredoka";
   background: linear-gradient(135deg, #f2f2f2 0%, #e8f4f8 100%);
   color: var(--text-dark);
   overflow-x: hidden;
