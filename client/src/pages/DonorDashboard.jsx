@@ -120,7 +120,7 @@ const DonorDashboard = () => {
               {foods.map(food => (
                 <div className="donor-food-card" key={food._id}>
                   <img
-                    src={`https://food-bridge-api-gojc.onrender.com/uploads/${food.image}`}
+                    src={food.image || "/placeholder.png"}
                     alt="food"
                   />
                   <h3>{food.title}</h3>
